@@ -19,6 +19,11 @@ Ejecutar las migraciones a la base de datos
 ```sh
 php artisan migrate
 ```
+
+General la key de la aplicación Laravel
+```sh
+php artisan key:generate
+```
 ## Ejecutar el proyecto
 Para correr el servidor de pruebas de laravel ejecturar el comando
 ```sh
