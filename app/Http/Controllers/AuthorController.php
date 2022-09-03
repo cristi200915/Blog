@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
+use Illuminate\Auth\Events\Validated;
 
 class AuthorController extends Controller
 {
@@ -15,7 +16,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+        return response()->json($authors, 200);
     }
 
     /**
@@ -36,7 +38,15 @@ class AuthorController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'lastname' => 'required'
+        ]);
+        $author = new Author();
+        $author->name = $request->name;
+        $author->lastname = $request->lastname;
+        $author->save();
+        return response()->json(['status' => 'Autor creado', 'data' => $author], 200);
     }
 
     /**

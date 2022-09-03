@@ -1,0 +1,10 @@
+<mat-selection-list #post [multiple]="false">
+    <mat-list-option *ngFor="let post of postsList" [routerLink]="['/posts/', post.id]">
+        <img matListAvatar [src]="'http://127.0.0.1:8000/uploads/' + post.image" alt="...">
+        <h3 matLine> {{post.title}} </h3>
+        <p matLine>
+            <span> {{post.author.name}} {{post.author.lastname}}</span>
+            <span class="demo-2"> -- {{post.content}} </span>
+        </p>
+    </mat-list-option>
+</mat-selection-list>
